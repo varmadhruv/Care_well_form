@@ -6,6 +6,12 @@ const { patientsRouter } = require("./src/routes/patients");
 
 dotenv.config();
 
+if (typeof process.env.MONGODB_URI === "string" && process.env.MONGODB_URI.trim()) {
+  console.log("MONGODB_URI loaded successfully");
+} else {
+  console.log("MONGODB_URI is missing");
+}
+
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -19,6 +25,13 @@ app.use((req, res, next) => {
     return res.sendStatus(204);
   }
   return next();
+});
+
+app.use("/api", (req, res, next) => {
+  if (req.method === "POST") {
+    console.log(`[POST] ${req.originalUrl}`);
+  }
+  next();
 });
 
 app.use("/api/patients", patientsRouter);

@@ -24,10 +24,6 @@ const visitDateInput = document.getElementById("visitDate");
 const dobPickerButton = document.querySelector('[data-picker="dob"]');
 const visitDatePickerButton = document.querySelector('[data-picker="visitDate"]');
 const toastStack = document.getElementById("toastStack");
-const API_BASE = (() => {
-  const isBackendOrigin = window.location.hostname && window.location.port === "3000";
-  return isBackendOrigin ? "" : "http://localhost:3000";
-})();
 let patientSearchTimer = null;
 let patientSearchController = null;
 
@@ -139,7 +135,7 @@ async function fetchNextUserId() {
   }
 
   try {
-    const response = await fetch(`${API_BASE}/api/patients/next-id`, { cache: "no-store" });
+    const response = await fetch("/api/patients/next-id", { cache: "no-store" });
     if (!response.ok) {
       return;
     }
@@ -370,7 +366,7 @@ async function runPatientSearch() {
   searchStatus.textContent = "Searching...";
 
   try {
-    const response = await fetch(`${API_BASE}/api/patients/search?q=${encodeURIComponent(query)}`, {
+    const response = await fetch(`/api/patients/search?q=${encodeURIComponent(query)}`, {
       cache: "no-store",
       signal: patientSearchController.signal,
     });
@@ -422,7 +418,7 @@ function renderPatientDetails(patient) {
 
 async function openPatientDetails(patientId) {
   try {
-    const response = await fetch(`${API_BASE}/api/patients/record/${encodeURIComponent(patientId)}`, { cache: "no-store" });
+    const response = await fetch(`/api/patients/record/${encodeURIComponent(patientId)}`, { cache: "no-store" });
     const data = await response.json().catch(() => ({}));
     if (!response.ok || !data.patient) {
       throw new Error(data.message || "Patient not found");
@@ -511,7 +507,7 @@ form.addEventListener("submit", async (event) => {
 
   setLoading(true);
   try {
-    const response = await fetch(`${API_BASE}/api/patients`, {
+    const response = await fetch("/api/patients", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(buildPayload()),

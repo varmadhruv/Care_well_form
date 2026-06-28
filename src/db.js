@@ -1,9 +1,15 @@
 const mongoose = require("mongoose");
 
-const DEFAULT_URI = "mongodb://127.0.0.1:27017/CareWellUserFormRecord";
-
 async function connectDb() {
-  const uri = process.env.MONGODB_URI || process.env.MONGO_URI || DEFAULT_URI;
+  const uri = typeof process.env.MONGODB_URI === "string" ? process.env.MONGODB_URI.trim() : "";
+
+  if (!uri) {
+    throw new Error("MONGODB_URI is missing.");
+  }
+
+  if (!/^mongodb(?:\+srv)?:\/\//i.test(uri)) {
+    throw new Error('Invalid MONGODB_URI scheme. Expected "mongodb://" or "mongodb+srv://".');
+  }
 
   if (mongoose.connection.readyState === 1) {
     return mongoose.connection;
