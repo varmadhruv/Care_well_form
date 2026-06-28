@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CareWell</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="screen screen-1 is-active" id="screen1" aria-label="CareWell splash screen">
+        <button class="icon-btn search-btn" type="button" aria-label="Search patient" id="screen1SearchButton">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="M16 16l4.5 4.5"></path>
+          </svg>
+        </button>
+
+        <div class="screen1-card">
+          <div class="screen1-logo-wrap" aria-hidden="true">
+            <img class="screen1-logo" src="assets/logo.png" alt="CareWell logo" />
+          </div>
+
+          <h1 class="screen1-title">CAREWELL</h1>
+
+          <div class="screen1-divider" aria-hidden="true">
+            <span class="screen1-divider-line"></span>
+            <span class="screen1-divider-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 12h4l2-4 4 8 2-4h6"></path>
+              </svg>
+            </span>
+            <span class="screen1-divider-line"></span>
+          </div>
+
+          <p class="screen1-subtitle">Healthcare Survey System</p>
+
+          <p class="screen1-description">
+            Collecting accurate health information<br />
+            for a better tomorrow.
+          </p>
+
+          <button class="enter-btn" type="button" id="enterRecordsBtn">
+            <svg class="enter-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 3h6l1 2h3v16H5V5h3l1-2z"></path>
+              <path d="M9 11h6"></path>
+              <path d="M9 15h6"></path>
+            </svg>
+            <span>Enter Records</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="screen screen-2" id="screen2" aria-label="CareWell patient survey screen" hidden>
+        <header class="top-nav" aria-label="CareWell navigation">
+          <button class="icon-btn" type="button" aria-label="Go back" id="backButton">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+          </button>
+
+          <div class="brand-lockup" aria-label="CareWell">
+            <img class="nav-logo" src="assets/logo.png" alt="CareWell logo" />
+            <div class="brand-copy">
+              <div class="brand-title">CAREWELL</div>
+              <div class="brand-subtitle">Healthcare Survey System</div>
+            </div>
+          </div>
+
+          <button class="icon-btn" type="button" aria-label="Go home" id="homeButton">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 11.5l9-7 9 7"></path>
+              <path d="M5.5 10.5V20h13V10.5"></path>
+              <path d="M9.5 20v-6h5v6"></path>
+            </svg>
+          </button>
+        </header>
+
+        <div class="screen2-body">
+          <section class="survey-card" aria-labelledby="surveyTitle">
+            <h1 class="sr-only" id="surveyTitle">CareWell Healthcare Survey System</h1>
+
+            <form class="survey-form" id="surveyForm" novalidate>
+              <div class="field-group single">
+                <label for="userId">User ID</label>
+                <div class="input-shell input-shell-readonly">
+                  <input id="userId" name="userId" type="text" readonly aria-readonly="true" />
+                  <svg class="field-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 11V8a5 5 0 0 1 10 0v3"></path>
+                    <rect x="5" y="11" width="14" height="10" rx="2"></rect>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="divider" aria-hidden="true">
+                <span class="divider-line"></span>
+                <span class="divider-text">PATIENT INFORMATION</span>
+                <span class="divider-line"></span>
+              </div>
+
+              <div class="field-group two-up">
+                <div class="field">
+                  <label for="firstName">First Name</label>
+                  <input id="firstName" name="firstName" type="text" autocomplete="given-name" />
+                  <p class="error" id="firstNameError" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="lastName">Last Name</label>
+                  <input id="lastName" name="lastName" type="text" autocomplete="family-name" />
+                  <p class="error" id="lastNameError" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="field-group two-up">
+                <div class="field">
+                  <label for="age">Age</label>
+                  <input id="age" name="age" type="number" inputmode="numeric" min="0" max="120" placeholder="Enter Age" />
+                  <p class="error" id="ageError" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="dob">Date of Birth</label>
+                  <div class="input-shell">
+                    <input id="dob" name="dob" type="date" />
+                    <button class="calendar-btn" type="button" aria-label="Open date picker" data-picker="dob">
+                      <svg class="field-icon field-icon-calendar" viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                        <path d="M8 3v4"></path>
+                        <path d="M16 3v4"></path>
+                        <path d="M3 9h18"></path>
+                      </svg>
+                    </button>
+                  </div>
+                  <p class="error" id="dobError" aria-live="polite"></p>
+                </div>
+              </div>
+              <p class="helper">Enter either Age or Date of Birth. Age will be calculated automatically.</p>
+
+              <div class="field-group single gender-group">
+                <span class="section-label">Gender</span>
+                <div class="choice-row" role="radiogroup" aria-label="Gender">
+                  <label class="choice-card">
+                    <input type="radio" name="gender" value="Male" />
+                    <span>Male</span>
+                  </label>
+                  <label class="choice-card">
+                    <input type="radio" name="gender" value="Female" />
+                    <span>Female</span>
+                  </label>
+                  <label class="choice-card">
+                    <input type="radio" name="gender" value="Other" />
+                    <span>Other</span>
+                  </label>
+                </div>
+                <p class="error" id="genderError" aria-live="polite"></p>
+              </div>
+
+              <div class="field-group single">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="4" placeholder="Enter Full Address"></textarea>
+                <p class="error" id="addressError" aria-live="polite"></p>
+              </div>
+
+              <div class="field-group two-up">
+                <div class="field">
+                  <label for="phone">Phone Number</label>
+                  <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" />
+                  <p class="error" id="phoneError" aria-live="polite"></p>
+                </div>
+                <div class="field">
+                  <label for="altPhone">Alternative Number</label>
+                  <input id="altPhone" name="altPhone" type="tel" inputmode="numeric" maxlength="10" placeholder="Optional" />
+                  <p class="error" id="altPhoneError" aria-live="polite"></p>
+                </div>
+              </div>
+
+              <div class="field-group single">
+                <label for="email">Email Address</label>
+                <input id="email" name="email" type="email" inputmode="email" placeholder="Optional" />
+                <p class="error" id="emailError" aria-live="polite"></p>
+              </div>
+
+              <div class="field-group single">
+                <span class="section-label">Response</span>
+                <div class="choice-row response-row" role="radiogroup" aria-label="Response">
+                  <label class="choice-card positive">
+                    <input type="radio" name="response" value="Positive" />
+                    <span>Positive</span>
+                  </label>
+                  <label class="choice-card negative">
+                    <input type="radio" name="response" value="Negative" />
+                    <span>Negative</span>
+                  </label>
+                </div>
+                <p class="error" id="responseError" aria-live="polite"></p>
+              </div>
+
+              <div class="field-group single">
+                <label for="visitDate">When should the CareWell team visit?</label>
+                <div class="input-shell">
+                  <input id="visitDate" name="visitDate" type="date" />
+                  <button class="calendar-btn" type="button" aria-label="Open visit date picker" data-picker="visitDate">
+                    <svg class="field-icon field-icon-calendar" viewBox="0 0 24 24" aria-hidden="true">
+                      <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                      <path d="M8 3v4"></path>
+                      <path d="M16 3v4"></path>
+                      <path d="M3 9h18"></path>
+                    </svg>
+                  </button>
+                </div>
+                <p class="error" id="visitDateError" aria-live="polite"></p>
+              </div>
+
+              <button class="submit-btn" type="submit" id="submitBtn">
+                <svg class="submit-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 7h16"></path>
+                  <path d="M6 7V5h12v2"></path>
+                  <path d="M6 7l1 13h10l1-13"></path>
+                  <path d="M9 11h6"></path>
+                  <path d="M9 15h6"></path>
+                </svg>
+                <span class="submit-label">Submit</span>
+                <span class="submit-spinner" aria-hidden="true"></span>
+              </button>
+            </form>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen screen-3" id="screen3" aria-label="CareWell patient search screen" hidden>
+        <header class="top-nav" aria-label="CareWell search navigation">
+          <button class="icon-btn" type="button" aria-label="Go back to home" id="searchBackButton">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+          </button>
+
+          <div class="brand-lockup" aria-label="CareWell">
+            <img class="nav-logo" src="assets/logo.png" alt="CareWell logo" />
+            <div class="brand-copy">
+              <div class="brand-title">CAREWELL</div>
+              <div class="brand-subtitle">Healthcare Survey System</div>
+            </div>
+          </div>
+
+          <button class="icon-btn is-disabled" type="button" aria-label="Search" tabindex="-1" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5"></circle>
+              <path d="M16 16l4.5 4.5"></path>
+            </svg>
+          </button>
+        </header>
+
+        <div class="screen3-body">
+          <section class="search-card" aria-labelledby="searchTitle">
+            <div class="search-heading">
+              <h1 id="searchTitle">Search Patient</h1>
+              <p>Search a patient using User ID or Patient Name.</p>
+            </div>
+
+            <div class="patient-search-shell">
+              <svg class="patient-search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5"></circle>
+                <path d="M16 16l4.5 4.5"></path>
+              </svg>
+              <input id="patientSearchInput" type="search" autocomplete="off" placeholder="Search by User ID or Patient Name..." aria-label="Search by User ID or Patient Name" />
+              <button class="search-clear-btn" type="button" id="patientSearchClear" aria-label="Clear search" hidden>&times;</button>
+            </div>
+
+            <div class="search-status" id="searchStatus" role="status" aria-live="polite"></div>
+            <div class="search-results" id="searchResults" aria-label="Search results"></div>
+
+            <div class="no-results" id="noResults" hidden>
+              <div class="no-results-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="6.5"></circle>
+                  <path d="M16 16l4.5 4.5"></path>
+                  <path d="M8.5 8.5l5 5"></path>
+                  <path d="M13.5 8.5l-5 5"></path>
+                </svg>
+              </div>
+              <h2>No matching patient found.</h2>
+              <p>Please check the User ID or Patient Name and try again.</p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="screen screen-4" id="screen4" aria-label="CareWell patient details screen" hidden>
+        <header class="top-nav" aria-label="CareWell patient details navigation">
+          <button class="icon-btn" type="button" aria-label="Go back to search" id="detailsBackButton">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6"></path>
+            </svg>
+          </button>
+
+          <div class="brand-lockup" aria-label="CareWell">
+            <img class="nav-logo" src="assets/logo.png" alt="CareWell logo" />
+            <div class="brand-copy">
+              <div class="brand-title">CAREWELL</div>
+              <div class="brand-subtitle">Healthcare Survey System</div>
+            </div>
+          </div>
+
+          <span class="nav-spacer" aria-hidden="true"></span>
+        </header>
+
+        <div class="screen3-body">
+          <section class="details-card" aria-labelledby="detailsTitle">
+            <div class="search-heading details-heading">
+              <h1 id="detailsTitle">Patient Details</h1>
+              <p>Read-only patient information.</p>
+            </div>
+            <div class="details-grid" id="patientDetails"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
